@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-плакат</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial';
+            background-color: #e34c83;
+        }
+        
+        .poster {
+            font-family: "TriforceCyr";
+            width: 1200px;
+            max-width: 90vw;
+            background-color: #6d387c;
+            text-align: center;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            margin: 40px auto;
+        }
+        
+        h1 {
+            font-size: 67px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .location {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .two-columns {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .column {
+            flex: 1;
+        }
+        
+        .text-block {
+            background: #f6d73f;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .text-block h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .text-block p {
+            font-family: "Arial";
+            color: #000;
+            line-height: 1.6;
+            font-size: 16px;
+            text-align: left;
+        }
+        
+        .text-block:hover {
+            box-shadow: 0 8px 25px rgba(102,126,234,0.4);
+        }
+        
+        .im1 {
+            margin: 20px 0;
+            background: #f6d73f;
+            border-radius: 10px;
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .im1 img {
+            max-width: 100%;
+            border-radius: 15px;
+        }
+        
+        .autor {
+            display: none;
+            font-family: "Arial";
+            color: #000;
+            line-height: 1.6;
+            font-size: 16px;
+            text-align: left;
+        }
+        
+        .macth-game {
+            display: flex;
+            gap: 20px;
+            text-align: left;
+            flex-wrap: wrap;
+        }
+        
+        .macth-game-1, .macth-game-2 {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .macth-game-1 h3, .macth-game-2 h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .macth-game-1 div, .macth-game-2 div {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .image-runner {
+            overflow: hidden;
+            background: #f6d73f;
+            padding: 15px 0;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .image-track {
+            display: flex;
+            gap: 20px;
+            animation: scroll 15s linear infinite;
+            width: fit-content;
+        }
+
+        .image-track img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .img-base {
+            width: 70%;
+            height: auto;
+            max-width: 300px;
+        }
+        
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        @media (max-width: 1024px) {
+            .poster {
+                padding: 30px;
+            }
+            h1 {
+                font-size: 50px;
+            }
+            .location {
+                font-size: 20px;
+            }
+            .text-block h3 {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .two-columns {
+                flex-direction: column;
+                gap: 20px;
+            }
+            h1 {
+                font-size: 40px;
+            }
+            .location {
+                font-size: 18px;
+            }
+            .poster {
+                padding: 25px;
+            }
+            .img-base {
+                width: 50%;
+                margin: 0 auto;
+                display: block;
+            }
+            .column {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            .location {
+                font-size: 16px;
+            }
+            .text-block {
+                padding: 20px;
+            }
+            .text-block h3 {
+                font-size: 20px;
+            }
+            .text-block p {
+                font-size: 14px;
+            }
+            .poster {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            .macth-game {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .macth-game-1, .macth-game-2 {
+                min-width: auto;
+            }
+            .image-track img {
+                width: 80px;
+                height: 120px;
+            }
+            .image-track {
+                gap: 15px;
+            }
+            .img-base {
+                width: 60%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+            .location {
+                font-size: 14px;
+            }
+            .text-block h3 {
+                font-size: 18px;
+            }
+            .text-block p {
+                font-size: 13px;
+            }
+            .poster {
+                padding: 15px;
+                border-radius: 15px;
+            }
+            .image-track img {
+                width: 60px;
+                height: 90px;
+            }
+            .img-base {
+                width: 80%;
+            }
+            .macth-game-1 div, .macth-game-2 div {
+                padding: 6px 0;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 20px;
+            }
+            .text-block {
+                padding: 15px;
+            }
+            .image-track img {
+                width: 50px;
+                height: 75px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <h1>Недетские сказки</h1>
+        <div class="location">Предыстория и разные жанры</div>
+        
+        <div class="two-columns">
+            <div class="column">
+                <div class="text-block" id="text-1">
+                    <h3>Сказочные истоки</h3>
+                    <p>Корни современного фэнтези уходят в древние мифы, которые появились 40–10 тысяч лет назад. Тогда человек только начинал осмысливать мир и населял его богами и духами, объясняя грозу, солнце и смену дня и ночи.<br><br>
+                    Позже мифы превратились в сказки. Они уже не объясняли устройство вселенной, а учили, как жить обычному человеку.<br><br>
+                    Одна из древнейших таких историй — о Кузнеце и Чёрте. Ей около шести тысяч лет. Она учила древней мудрости: уважай то, чего не понимаешь, и не будь гордым.</p>
+                </div>
+                <div id="image-1" class="im1">
+                    <img src="C:\Users\vdega\Downloads\project\image_2026-03-18_07-39-11.png" alt="Фэнтези иллюстрация">
+                </div>
+                
+                <div class="text-block">
+                    <h3>Произведения в разных жанрах</h3>
+                    <div class="macth-game">
+                        <div class="macth-game-1">
+                            <h3>Жанры</h3>
+                            <div>Эпическое фэнтези</div>
+                            <div>Мистический хоррор</div>
+                            <div>Героическое фэнтези</div>
+                            <div>Городское фэнтези</div>
+                            <div>Историческое фэнтези</div>
+                        </div>
+                        <div class="macth-game-2">
+                            <h3>Произведения</h3>
+                            <div>Властелин колец</div>
+                            <div>Мифы Ктулху</div>
+                            <div>Конан-варвар</div>
+                            <div>Ночной дозор</div>
+                            <div>Сага о Рейневане</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <img src="C:\Users\vdega\Downloads\project\посох-no-bg-preview (carve.photos).png" class="img-base" alt="Фэнтези иллюстрация">
+            </div>
+        </div>
+    </div>
+    
+    <div class="poster">
+        <h1>Недетские сказки</h1>
+        <div class="location">Легенды жанра</div>
+        
+        <div class="two-columns">
+            <div class="column">
+                <div class="text-block" id="text-2">
+                    <h3>Первые произведения жанра</h3>
+                    <p>У современного фэнтези есть 3 отца, каждый из которых привнёс в жанр что-то своё.</p>
+                    <p id="av1" class="autor"><strong>Джон Р. Р. Толкин</strong><br>Профессор из Оксфорда начал придумывать языки, а закончил целым Средиземьем. Всё родилось в окопах Первой мировой: в госпитале он писал «Книгу утраченных сказаний», а позже — «Хоббита» и «Властелина колец».</p>
+                    <p id="av2" class="autor"><strong>Говард Лавкрафт</strong><br>Американец из Провиденса строил миры, чтобы их бояться. Тени детства и затворничество родили космицизм — философию, где человек — песчинка перед равнодушным космосом. Ктулху, Йог-Сотот, Азатот — боги, от которых сходят с ума.</p>
+                    <p id="av3" class="autor"><strong>Роберт Говард</strong><br>Техасец дал жанру мышцы и ярость чистого экшена. Он придумал Хайборийскую эру, где действовал Конан-варвар. Героическое фэнтези, «меч и магия», рубка без высокой идеи — просто за жизнь.</p>
+                    <div class="image-runner">
+                        <div class="image-track">
+                            <img src="C:\Users\vdega\Downloads\project\image_2026-03-18_07-46-52-no-bg-preview (carve.photos).png">
+                            <img src="C:\Users\vdega\Downloads\project\image_2026-03-18_07-45-07.png">
+                            <img src="C:\Users\vdega\Downloads\project\image_2026-03-18_08-02-10-Photoroom.png"> 
+                            <img src="C:\Users\vdega\Downloads\project\image_2026-03-18_07-46-52-no-bg-preview (carve.photos).png">
+                            <img src="C:\Users\vdega\Downloads\project\image_2026-03-18_07-45-07.png">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <img src="C:\Users\vdega\Downloads\project\tolkien.jpg" class="img-base">
+            </div>
+        </div>
+    </div>
+
+    <div class="poster">
+        <h1>Недетские сказки</h1>
+        <div class="location">Фан факты</div>
+        <div class="two-columns">
+            <div class="column">
+                <div class="text-block">
+                    <h3>Милые кошкодевочки жесткого мира</h3>
+                    <p>Фелиниды (Homo sapiens hirsutus) появились в 2012 году как забавный курьёз. В правилах шестой редакции их мельком упомянули. Это была эпоха, когда Games Workshop не относился к себе слишком серьёзно.<br><br>
+                    Долгие годы они жили как мем, пока в 2021 году в книге Liber Xenologis не получили полноценное описание. Крукс Грех назвал их хладнокровными и лучшими убийцами в Имперской Гвардии.<br><br>
+                    Сегодня фелиниды появляются в игре Darktide и cRPG Rogue Trader. Империум официально признаёт их и не преследует как мутантов. Они живут в резервациях, строят общества по принципам стаи, а их навыки востребованы в задачах на скрытность. Из-за редкости большинство граждан Империума даже не подозревает об их существовании.</p>
+                </div>    
+            </div>
+            <div class="column">
+                <button onclick="alert('МЯУ!')">
+                    <img class="img-base" src="C:\Users\vdega\Downloads\project\0f60497a-88a9-4675-9843-943469b73095-no-bg-preview (carve.photos).png" alt="Кошкодевочка">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let TextVisible = true;
+        const textBlock1 = document.getElementById('text-1');
+        const imageBlock1 = document.getElementById('image-1');
+        
+        function toggleTextImage() {
+            if (TextVisible) {
+                textBlock1.style.display = 'none';
+                imageBlock1.style.display = 'block';
+            } else {
+                textBlock1.style.display = 'block';
+                imageBlock1.style.display = 'none';
+            }
+            TextVisible = !TextVisible;
+        }
+        
+        if (textBlock1) {
+            textBlock1.addEventListener('click', toggleTextImage);
+        }
+        if (imageBlock1) {
+            imageBlock1.addEventListener('click', toggleTextImage);
+        }
+        
+        let autornumb = "av1";
+        const textBlock2 = document.getElementById('text-2');
+        const av1 = document.getElementById('av1');
+        const av2 = document.getElementById('av2');
+        const av3 = document.getElementById('av3');
+        
+        if (av1) av1.style.display = 'block';
+        
+        if (textBlock2) {
+            textBlock2.addEventListener('click', function() {
+                const current = document.getElementById(autornumb);
+                let next;
+                
+                if (autornumb === "av1") {
+                    next = document.getElementById("av2");
+                    autornumb = "av2";
+                } else if (autornumb === "av2") {
+                    next = document.getElementById("av3");
+                    autornumb = "av3";
+                } else {
+                    next = document.getElementById("av1");
+                    autornumb = "av1";
+                }
+                
+                if (current) current.style.display = 'none';
+                if (next) next.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
